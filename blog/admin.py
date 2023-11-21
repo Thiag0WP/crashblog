@@ -3,6 +3,10 @@ from django.contrib import admin
 from .models import Post, Category, Comment
 
 # Register your models here.
+class CommentItemInline(admin.TabularInline):
+     model = Comment
+     raw_id_fields = ['post']
+     # extra = 0
 
 class PostAdmin(admin.ModelAdmin):
      search_fields = ['title', 'intro', 'body']
@@ -20,10 +24,7 @@ class CommentAdmin(admin.ModelAdmin):
      list_display = ['name', 'email', 'body', 'created_at']
      list_filter = ['created_at']
 
-class CommentInline(admin.TabularInline):
-     model = Comment
-     raw_id_fields = ['post']
-     # extra = 0
+
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)

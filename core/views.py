@@ -5,7 +5,7 @@ from blog.models import Post
 # Create your views here.
 
 def frontpage(request):
-    posts = Post.objects.filter(status=post.ACTIVE)
+    posts = Post.objects.filter(status=Post.ACTIVE)
     return render(request, 'core/frontpage.html', {'posts': posts})
 
 def about(request):
